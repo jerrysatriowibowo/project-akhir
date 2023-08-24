@@ -13,7 +13,7 @@
         <p class="mx-auto mt-12 max-w-md leading-7 text-gray-600">MCStore menawarkan produk sports, fashion, dan lifestyle dari beragam brand terkemuka. Belanja berbagai produk olahraga, fashion, dan lifestyle dari brand ternama sekarang! Free Shipping. Shop the Latest Trends.</p>
 
         <div class="group relative mt-10 inline-flex">
-          <a href="#" title="" class="rounded-xl bg-blue-700 px-10 py-3 font-medium text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2 hover:bg-blue-600">Pergi Berbelanja</a>
+          <a href="/produk" title="" class="rounded-xl bg-blue-700 px-10 py-3 font-medium text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2 hover:bg-blue-600">Pergi Berbelanja</a>
           <div class="-scale-x-100 absolute left-0 -bottom-10 hidden h-10 w-10 -rotate-12 text-blue-600 md:inline-flex">
             <svg viewBox="0 0 82 35" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M0 21.3963C0.189514 19.1422 0.475057 16.717 0.554355 14.2852C0.582363 13.435 0.32301 12.6326 1.24839 12.1517C1.43863 12.053 1.7169 11.8956 1.85767 11.9661C4.2446 13.1626 6.90906 13.1934 9.41312 13.8814C11.09 14.3423 12.6519 15.089 13.7134 16.5797C13.9251 16.8774 13.9105 17.3427 14 17.7305C13.6228 17.8077 13.2227 18.01 12.8727 17.9421C10.3283 17.4477 7.78825 16.9245 5.25946 16.353C4.46612 16.1737 4.32244 16.4862 4.22859 17.1961C4.0118 18.8342 3.66769 20.4541 3.43198 22.0899C3.33086 22.7891 3.36905 23.509 3.35123 24.2197C3.34977 24.2791 3.44107 24.3474 3.43052 24.3989C3.32213 24.9318 3.2712 25.8796 3.07114 25.9142C2.49387 26.0144 1.77655 25.8915 1.25603 25.5961C-0.352473 24.6832 0.143681 23.0129 0 21.3963Z" fill="currentColor" />
@@ -91,7 +91,7 @@
   </div>
 </section>
 
-  <section class="bg-white py-6 sm:py-8 lg:py-12">
+<section class="bg-grey py-6 sm:py-8 lg:py-12">
   <div class="mx-auto max-w-screen-xl px-4 md:px-8">
     <div class="mb-10 md:mb-16">
       <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Product Dengan Penjualan Terbaik</h2>
@@ -105,7 +105,7 @@
         </a>
 
         <div class="flex flex-col gap-2">
-          <span class="text-sm text-gray-400">9 Agustus 2023</span>
+          <span class="text-sm text-black-1000">9 Agustus 2023</span>
 
           <h2 class="text-xl font-bold text-gray-800">
             <a href="#" class="transition duration-100 hover:text-rose-500 active:text-rose-600">Sepatu Compass.</a>
@@ -125,7 +125,7 @@
         </a>
 
         <div class="flex flex-col gap-2">
-          <span class="text-sm text-gray-400">13 Agustus 2023</span>
+          <span class="text-sm text-black-1000">13 Agustus 2023</span>
 
           <h2 class="text-xl font-bold text-gray-800">
             <a href="#" class="transition duration-100 hover:text-rose-500 active:text-rose-600">Hoodie Hitam Polos.</a>
@@ -145,7 +145,7 @@
         </a>
 
         <div class="flex flex-col gap-2">
-          <span class="text-sm text-gray-400">11 Agustus 2023</span>
+          <span class="text-sm text-black-1000">11 Agustus 2023</span>
 
           <h2 class="text-xl font-bold text-gray-800">
             <a href="#" class="transition duration-100 hover:text-rose-500 active:text-rose-600">Celana Cinos Panjang.</a>
@@ -165,7 +165,7 @@
         </a>
 
         <div class="flex flex-col gap-2">
-          <span class="text-sm text-gray-400">12 Agustus 2023</span>
+          <span class="text-sm text-black-1000">12 Agustus 2023</span>
 
           <h2 class="text-xl font-bold text-gray-800">
             <a href="#" class="transition duration-100 hover:text-rose-500 active:text-rose-600">Jordan Nike Air</a>
@@ -178,6 +178,89 @@
           </div>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 text-blue-900 sm:py-16 lg:py-20">
+  <div class="mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center">
+      <div class="text-center">
+        <h2 class="mt-4 text-3xl font-bold text-blue-900 sm:text-4xl xl:text-5xl">Testimoni Pembeli</h2>
+        <p class="text-lg font-medium text-blue-600">Dibawah Ini Adalah Review Atau Testimoni Dari Para Pembeli Yang Sudah Membeli Barang Maupun Mengkritik Barang</p>
+      </div>
+
+      <div class="order-3 mt-8 text-center md:mt-16">
+        <button class="mb-20 rounded-lg border-2 border-blue-700 bg-blue-700 px-6 py-2 font-medium text-white transition hover:translate-y-1">Lihat Testimoni Lainnya</button>
+      </div>
+
+      <div class="relative mx-auto mt-20 grid max-w-lg grid-cols-1 gap-6 md:max-w-none md:grid-cols-3 lg:gap-10">
+        <div class="bg-blue-100 flex flex-col rounded-xl border-2 border-blue-500 text-center shadow-xl shadow-blue-200">
+          <div class="relative flex flex-1 flex-col justify-between p-6 lg:py-7 lg:px-5">
+            <span class="bg-blue-500 text-white absolute -left-5 -bottom-6 rounded-full  p-3 text-5xl">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M7.16 3.5C4.73 5.06 3.55 6.67 3.55 9.36c.16-.05.3-.05.44-.05c1.27 0 2.5.86 2.5 2.41c0 1.61-1.03 2.61-2.5 2.61c-1.9 0-2.99-1.52-2.99-4.25c0-3.8 1.75-6.53 5.02-8.42L7.16 3.5zm7 0c-2.43 1.56-3.61 3.17-3.61 5.86c.16-.05.3-.05.44-.05c1.27 0 2.5.86 2.5 2.41c0 1.61-1.03 2.61-2.5 2.61c-1.89 0-2.98-1.52-2.98-4.25c0-3.8 1.75-6.53 5.02-8.42l1.14 1.84h-.01z" clip-rule="evenodd" /></svg>
+            </span>
+            <div class="flex-1">
+              <p class="border-blue-500 text-xl bg-white border-b-2 pb-1">Mengenai Barang</p>
+
+              <blockquote class="mt-8 flex-1">
+                <p class="leading-relaxed text-blue-900">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium dolores facere repellendus, velit quis fugiat.</p>
+              </blockquote>
+            </div>
+
+            <div class="-mx-5 mt-8 px-8 py-1">
+              <div class="">
+                <p class="text-base font-bold">Garong Noki</p>
+                <p class="mt-0.5 text-sm">Model Di Indonesia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-blue-100 flex flex-col rounded-xl border-2 border-blue-500 text-center shadow-xl shadow-blue-200">
+          <div class="relative flex flex-1 flex-col justify-between p-6 lg:py-7 lg:px-5">
+            <span class="bg-blue-500 text-white absolute -left-5 -bottom-6 rounded-full  p-3 text-5xl">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M7.16 3.5C4.73 5.06 3.55 6.67 3.55 9.36c.16-.05.3-.05.44-.05c1.27 0 2.5.86 2.5 2.41c0 1.61-1.03 2.61-2.5 2.61c-1.9 0-2.99-1.52-2.99-4.25c0-3.8 1.75-6.53 5.02-8.42L7.16 3.5zm7 0c-2.43 1.56-3.61 3.17-3.61 5.86c.16-.05.3-.05.44-.05c1.27 0 2.5.86 2.5 2.41c0 1.61-1.03 2.61-2.5 2.61c-1.89 0-2.98-1.52-2.98-4.25c0-3.8 1.75-6.53 5.02-8.42l1.14 1.84h-.01z" clip-rule="evenodd" /></svg>
+            </span>
+            <div class="flex-1">
+              <p class="border-blue-500 text-xl bg-white border-b-2 pb-1">Mengenai Website</p>
+
+              <blockquote class="mt-8 flex-1">
+                <p class="leading-relaxed text-blue-900">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium dolores facere repellendus, velit quis fugiat.</p>
+              </blockquote>
+            </div>
+
+            <div class="-mx-5 mt-8 px-8 py-1">
+              <div class="">
+                <p class="text-base font-bold">Letdark Youko</p>
+                <p class="text-blue-90 mt-0.5 text-sm">YouTuber</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-blue-100 flex flex-col rounded-xl border-2 border-blue-500 text-center shadow-xl shadow-blue-200">
+          <div class="relative flex flex-1 flex-col justify-between p-6 lg:py-7 lg:px-5">
+            <span class="bg-blue-500 text-white absolute -left-5 -bottom-6 rounded-full  p-3 text-5xl">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M7.16 3.5C4.73 5.06 3.55 6.67 3.55 9.36c.16-.05.3-.05.44-.05c1.27 0 2.5.86 2.5 2.41c0 1.61-1.03 2.61-2.5 2.61c-1.9 0-2.99-1.52-2.99-4.25c0-3.8 1.75-6.53 5.02-8.42L7.16 3.5zm7 0c-2.43 1.56-3.61 3.17-3.61 5.86c.16-.05.3-.05.44-.05c1.27 0 2.5.86 2.5 2.41c0 1.61-1.03 2.61-2.5 2.61c-1.89 0-2.98-1.52-2.98-4.25c0-3.8 1.75-6.53 5.02-8.42l1.14 1.84h-.01z" clip-rule="evenodd" /></svg>
+            </span>
+            <div class="flex-1">
+              <p class="border-blue-500 text-xl bg-white border-b-2 pb-1">Mengenai Produk</p>
+
+              <blockquote class="mt-8 flex-1">
+                <p class="leading-relaxed text-blue-900">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium dolores facere repellendus, velit quis fugiat.</p>
+              </blockquote>
+            </div>
+
+            <div class="-mx-5 mt-8 px-8 py-1">
+              <div class="">
+                <p class="text-base font-bold">Heri Nurohman</p>
+                <p class="text-blue-90 mt-0.5 text-sm">Pemain NBA</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

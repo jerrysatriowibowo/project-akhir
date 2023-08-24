@@ -2,12 +2,12 @@
     <div class="flex min-h-screen w-screen w-full items-center justify-center text-gray-600 bg-gray-50">
   <div class="relative">
     
-<div class="hidden sm:block h-56 w-56 text-indigo-300 absolute a-z-10 -left-20 -top-20"><br><br><br>
+<div class="hidden sm:block h-56 w-56 text-indigo-300 absolute a-z-10 -left-20 -top-20"><br><br><br><br>
    <svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='40' height='40' patternTransform='scale(0.6) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='none'/><path d='M11 6a5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5'  stroke-width='1' stroke='none' fill='currentColor'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(#a)'/></svg>
   </div>
 <div class="hidden sm:block h-28 w-28 text-indigo-300 absolute a-z-10 -right-20 -bottom-20">
    <svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='b' patternUnits='userSpaceOnUse' width='40' height='40' patternTransform='scale(0.5) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='none'/><path d='M11 6a5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5'  stroke-width='1' stroke='none' fill='currentColor'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(#b)'/></svg>
-  </div><br><br><br>
+  </div><br><br><br><br>
     <div class="relative flex flex-col sm:w-[30rem] rounded-lg border-gray-400 bg-white shadow-lg px-4">
       <div class="flex-auto p-6">
         <div class="mb-10 flex flex-shrink-0 flex-grow-0 items-center justify-center overflow-hidden">
@@ -16,23 +16,40 @@
           </a>
         </div>
         <h4 class="mb-2 font-medium text-gray-700 xl:text-xl">Selamat Datang di MCStore!</h4>
-        <p class="mb-6 text-gray-500">Mohon Login Untuk Masuk Ke MCStore.</p>
+        <p class="mb-6 text-gray-500">Mohon Registrasi Untuk Login Ke MCStore.</p>
 
-        <form id="" class="mb-4" @submit.prevent="performLogin">
+        <form id="" class="mb-4" @submit.prevent="performRegister">
           <div class="mb-4">
-            <label for="email" class="mb-2 inline-block text-xs font-medium uppercase text-gray-700">Username</label>
-            <input type="text" class="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" id="email" v-model="email" placeholder="Username Atau Password" autofocus=""/>
+            <label for="email" class="mb-2 inline-block text-xs font-medium uppercase text-gray-700">Nama Lengkap</label>
+            <input type="text" class="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" id="email" v-model="name" placeholder="Nama Lengkap" />
+          </div>
+          <div class="mb-4">
+            <label for="email" class="mb-2 inline-block text-xs font-medium uppercase text-gray-700">Username Atau Email</label>
+            <input type="text" class="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" id="email" v-model="email" placeholder="Username Atau Email" />
           </div>
           <div class="mb-4">
             <div class="flex justify-between">
               <label class="mb-2 inline-block text-xs font-medium uppercase text-gray-700" for="password">Password</label>
-              <a href="#" class="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500">
-                <small class=" ">Lupa Password?</small>
+              <a href="auth-forgot-password-basic.html" class="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500">
               </a>
             </div>
             <div class="relative flex w-full flex-wrap items-stretch">
               <input type="password" id="password" class="relative block flex-auto cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" name="password" v-model="password" placeholder="··········" />
             </div>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between">
+              <label class="mb-2 inline-block text-xs font-medium uppercase text-gray-700" for="confirm-password">Konfirmasi Password</label>
+              <a href="auth-forgot-password-basic.html" class="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500">
+              </a>
+            </div>
+            <div class="relative flex w-full flex-wrap items-stretch">
+              <input type="password" id="confirm-password" class="relative block flex-auto cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" name="confirm-password" v-model="confirm_password" placeholder="··········" />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="phone" class="mb-2 inline-block text-xs font-medium uppercase text-gray-700">Nomor Telepon</label>
+            <input type="number" class="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" id="phone" name="phone" v-model="phone" placeholder="(+62)" />
           </div>
           <div class="mb-4">
             <div class="block">
@@ -41,49 +58,49 @@
             </div>
           </div>
           <div class="mb-4">
-            <button class="grid w-full cursor-pointer select-none rounded-md border border-indigo-500 bg-indigo-500 py-2 px-5 text-center align-middle text-sm text-white shadow hover:border-indigo-600 hover:bg-indigo-600 hover:text-white focus:border-indigo-600 focus:bg-indigo-600 focus:text-white focus:shadow-none" type="submit">Login</button>
+            <button class="grid w-full cursor-pointer select-none rounded-md border border-indigo-500 bg-indigo-500 py-2 px-5 text-center align-middle text-sm text-white shadow hover:border-indigo-600 hover:bg-indigo-600 hover:text-white focus:border-indigo-600 focus:bg-indigo-600 focus:text-white focus:shadow-none" type="submit">Registrasi</button>
           </div>
         </form>
 
         <p class="mb-4 text-center">
-          Belum Punya Akun?
-          <a href="/registrasi" class="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500">Buat Akun</a>
+          Sudah Punya Akun?
+          <a href="/login" class="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500">Login</a>
         </p>
       </div>
     </div>
   </div>
-</div><br><br><br>
+</div><br><br><br><br>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
     data() {
         return {
+            name: '',
             email: '',
             password: '',
+            confirm_password: '',
+            phone: '',
         };
     },
-    computed: {
-      ...mapGetters('auth', ['loginError', 'isAuthenticated']),
-    },
     methods: {
-        ...mapActions('auth', ['login']),
-        async performLogin() {
+        ...mapActions('auth', ['register']),
+        async performRegister() {
             const credentials = {
+                name: this.name,
                 email: this.email,
                 password: this.password,
+                confirm_password: this.confirm_password,
+                phone: this.phone,
             };
 
-            const success = await this.login(credentials);
-            if (success && this.isAuthenticated) {
-              this.$router.push('/')
+            const success = await this.register(credentials);
+
+            if (success) {
+                this.$router.push('/login');
             } else {
-              if (this.loginError) {
-                alert(this.loginError);
-              } else {
-                alert("Login Gagal");
-            }
+                alert("Registrasi Gagal");
             }
         },
     },
