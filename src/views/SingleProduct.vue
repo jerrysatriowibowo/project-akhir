@@ -46,15 +46,19 @@
             </svg>
           </div>
           <p class="ml-2 text-sm font-medium text-gray-500">1,209 Reviews</p>
+        </div><br>
+        
+        <h3 class="text-bold">Pilih Jumlah</h3>
+        <div class="class= grid md:grid-cols-3 mb-3 mt-3">
+          <div class="flex items-center border-gray-100">
+            <span @click="kurang" class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-black hover:text-yellow-50"> - </span>
+              <span class="mr-2 ml-2">
+                {{ cek }}
+              </span>
+            <span @click="tambah" class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-black hover:text-yellow-50"> + </span>
+          </div>
         </div>
-
-        <h2 class="mt-8 text-base text-gray-900">Brand</h2>
-        <div class="mt-3 flex select-none flex-wrap items-center gap-1">
-          <label class="">
-            <input type="text" name="type" value="brand" class="peer sr-only" checked />
-            <p class="bg-black text-white rounded-lg border border-blue px-6 py-2 font-bold">{{ getSingleProduct.name }}</p>
-          </label>
-        </div>
+        <h2 class="font-bold text-black truncate mt-2">Stock : {{ getSingleProduct.stock }}</h2>
 
         <h2 class="mt-8 text-base text-gray-900">Ukuran</h2>
         <div class="mt-3 flex select-none flex-wrap items-center gap-1">
@@ -87,14 +91,12 @@
         </div>
 
         <div v-if="token">
-          <router-link to="/keranjang">
-            <button type="button" class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-green-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
+            <button @click="addToCart(getSingleProduct.id)" type="button" class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-green-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
               <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
               Beli Sekarang
             </button>
-          </router-link>
         </div>
 
         <div v-else>
@@ -134,14 +136,32 @@ export default {
     props: ['slug'],
     data() {
       return {
-        token: null
+        token: null,
+        cek: 1
       }
     },
     computed: {
         ...mapState('product', ['getSingleProduct']),
     },
     methods: {
-        ...mapActions("cart", ["fetchCart"])
+        ...mapActions("cart", ["fetchCart"]),
+
+    async addToCart(productId) {
+        try {
+          await this.$store.dispatch('product/addToCart', productId),
+            this.fetchCart();
+        } catch (error) {
+            console.error(error);
+          }
+        },
+        tambah() {
+          this.cek++
+        },
+        kurang() {
+        if (this.cek > 1) {
+          this.cek--
+        }
+      },
     },
     beforeMount() {
       this.fetchCart();

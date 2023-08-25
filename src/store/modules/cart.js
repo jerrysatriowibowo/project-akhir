@@ -3,10 +3,10 @@ import axios from "axios";
 const cart = {
     namespaced: true,
     state: {
-        cartData: [],
+        cart: [],
     },
     getters: {
-        getCart: (state) => state.cartData,
+        getCart: (state) => state.cart,
     },
     actions: {
         async fetchCart({ commit }) {
@@ -22,17 +22,37 @@ const cart = {
                         },
                     }
                 );
-                console.log(dataCart.data["cart_items"]);
-                commit("SET_CART", dataCart.data["cart_items"]);
+                console.log(dataCart.data.cart_items.data);
+                commit("SET_CART", dataCart.data.cart_items.data);
             } catch (error) {
-                alert(error);
+                alert("Error Bang");
                 console.log(error);
             }
         },
+        async removeFromCart({ commit, dispatch}, cartId) {
+            try {
+                const response = await axios.post(
+                    'https://ecommerce.olipiskandar.com/api/v1/carts/destroy',
+                    {
+                        cart_id: cartId,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    }
+                );
+                console.log(response.data.message);
+                dispatch("fetchCart");
+            } catch (error) {
+                alert("Gagal Hapus Barang Bang");
+                console.log(error);
+            }
+        }
     },
     mutations: {
         SET_CART(state, cart) {
-            state.cartData = cart;
+            state.cart = cart;
         },
     },
 };

@@ -1,88 +1,124 @@
 <template>
-    <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
-  <a href="#" class="text-2xl font-bold text-gray-800"></a>
-  <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
-    <div class="relative">
-      <ul class="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
-        <li class="flex items-center space-x-3 text-left sm:space-x-4">
-          <a class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-200 text-xs font-semibold text-emerald-700" href="/produk"
-            ><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></a>
-          <span class="font-semibold text-gray-900">Produk</span>
-        </li>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-        <li class="flex items-center space-x-3 text-left sm:space-x-4">
-          <a class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-600 text-xs font-semibold text-white ring ring-gray-600 ring-offset-2" href="#">2</a>
-          <span class="font-semibold text-gray-900">Keranjang</span>
-        </li>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-        <li class="flex items-center space-x-3 text-left sm:space-x-4">
-          <a class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-400 text-xs font-semibold text-white" href="#">3</a>
-          <span class="font-semibold text-gray-500">Checkout</span>
-        </li>
-      </ul>
+  <section class="h-screen bg-gray-100 py-12 sm:py-16 lg:py-20">
+  <div class="mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-center">
+      <h1 class="text-2xl font-semibold text-gray-900">Keranjang</h1>
     </div>
-  </div>
-</div>
-<div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
-  <div class="px-4 pt-8">
-    <p class="text-xl font-medium">Keranjang.</p>
-    <p class="text-gray-400">Cek Barang Pilihan Mu Dan Selesaikan Metode Pembayaran.</p>
-    <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-      <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-        <img class="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://ecommerce.olipiskandar.com/public/uploads/all/UpUx213sXC5XBW07vbXn1vkWMWxTu95CDDbMzwkF.jpg" alt="" />
-        <div class="flex w-full flex-col px-4 py-4">
-          <span class="font-semibold">Nike</span>
-          <span class="float-right text-gray-400">1kg - 5kg</span>
-          <p class="text-lg font-bold">Rp.999</p>
+
+    <div class="mx-auto mt-8 max-w-2xl md:mt-12">
+      <div class="bg-white shadow">
+        <div class="px-4 py-6 sm:px-8 sm:py-10">
+          <div class="flow-root">
+            <ul class="-my-8">
+              <div v-for="cart in getCart" :key="cart.cart_id">
+                <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
+                  <div class="shrink-0">
+                    <img class="h-24 w-24 max-w-full rounded-lg object-cover" src="https://ecommerce.olipiskandar.com/public/uploads/all/UpUx213sXC5XBW07vbXn1vkWMWxTu95CDDbMzwkF.jpg" alt="" />
+                  </div>
+
+                <div class="relative flex flex-1 flex-col justify-between">
+                  <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
+                    <div class="pr-8 sm:pr-5">
+                      <p class="text-base font-semibold text-gray-900">{{ cart.name }}</p>
+                      <p class="mx-0 mt-1 mb-0 text-sm text-black-1000">1Kg - 5Kg</p>
+                    </div>
+
+                    <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
+                      <p class="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">Rp.{{ cart.regular_price }}</p>
+
+                      <div class="class= grid md:grid-cols-7 mb-4 mt-7">
+                        <div class="flex items-center border-gray-100">
+                          <span @click="kurang" class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-black hover:text-yellow-50"> - </span>
+                            <span class="mr-2 ml-2">{{ cek }}</span>
+                          <span @click="tambah" class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-black hover:text-yellow-50"> + </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
+                    <button type="button" @click="removeItem(cart.cart_id)" class="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900">
+                      <svg class="block h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" class=""></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </div>
+          </ul>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-    <p class="text-xl font-medium">Detail Pembayaran</p>
-    <p class="text-gray-400">Selesaikan Belanjaan Mu Disini.</p>
-    <div class="">
-      <label for="alamat" class="mt-4 mb-2 block text-sm font-medium">Alamat</label>
-      <div class="relative">
-        <input type="text" id="alamat" name="alamat" class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Masukan Alamat" />
-        <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-          </svg>
-        </div>
-      </div>
-      <label for="card-holder" class="mt-4 mb-2 block text-sm font-medium">Jenis Kartu</label>
-      <div class="relative">
-        <input type="text" id="card-holder" name="card-holder" class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="jenis kartu" />
-        <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
-          </svg>
-        </div>
-      </div>
-      <label for="billing-address" class="mt-4 mb-2 block text-sm font-medium">Detail Kota</label>
-      <div class="flex flex-col sm:flex-row">
-        <div class="relative flex-shrink-0 sm:w-7/12">
-          <input type="text" id="billing-address" name="billing-address" class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Detail Kota Anda" />
-          <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-            <img class="h-4 w-4 object-contain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALcAAAB6CAMAAADKxjLHAAAADFBMVEX/AAD/////RET/6Ogl7bsCAAAAZklEQVR4nO3OAQ3AMAzAsG7nz/ksInWyEXgGAAAAAAAAAAAAAB5yd5pvpzk7ebe8W94t75Z3y7vl3fJuebe8W94t75Z3y7vl3fJuebe8W94t75Z3y7vl3fJuebe8W94t75Z3a+v7B96LLniPtphHAAAAAElFTkSuQmCC" alt="" />
+
+          <div class="mt-6 border-t border-b py-2">
+            <div class="flex items-center justify-between">
+              <p class="text-sm text-black-1000">Subtotal</p>
+              <p class="text-lg font-semibold text-black-900">Rp.{{ totalHarga() }}</p>
+            </div>
+            <div class="flex items-center justify-between">
+              <p class="text-sm text-black-1000">Ongkir</p>
+              <p class="text-lg font-semibold text-black-900">Rp.9.000</p>
+            </div>
+          </div>
+          <div class="mt-6 flex items-center justify-between">
+            <p class="text-sm font-medium text-black-900">Total</p>
+            <p class="text-2xl font-semibold text-black-900"><span class="text-xs font-normal text-black-1000">Rp.</span>{{ totalHarga() }}</p>
+          </div>
+
+          <div class="mt-6 text-center">
+            <a href="/checkout">
+              <button type="button" class="group inline-flex w-full items-center justify-center rounded-md bg-green-700 px-6 py-4 text-lg font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-green-500">
+                Beli Sekarang
+                <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </a>
           </div>
         </div>
       </div>
-
-      <div class="mt-6 border-t border-b py-2">
-        <div class="flex items-center justify-between">
-          <p class="text-sm font-medium text-gray-900">Subtotal</p>
-          <p class="font-semibold text-gray-900">Rp.999</p>
-        </div>
-      </div>
     </div>
-    <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"><a href="/checkout">Checkout</a></button>
   </div>
-</div><br>
+</section>
+<br><br><br><br><br>
 </template>
+<script>
+import { mapActions, mapGetters } from 'vuex';
+
+export default {
+  data() {
+    return {
+      cek: 1
+    }
+  },
+  computed:{
+    ...mapGetters('cart', ['getCart'])
+  },
+  methods: {
+    ...mapActions('cart', ['fetchCart']),
+    ...mapActions('product', ['fetchProduct']),
+    totalHarga() {
+      this.total = this.getCart.reduce((acc, product) => {
+        return acc + parseFloat(product.regular_price);
+      }, 0);
+      return this.total.toFixed(2);
+    },
+    tambah() {
+      this.cek++
+    },
+    kurang() {
+      if (this.cek > 1) {
+        this.cek--
+      }
+    },
+    removeItem(cartId) {
+      this.$store.dispatch('cart/removeFromCart', cartId)
+    }
+  },
+  beforeMount() {
+    this.fetchProduct();
+  },
+  mounted(){
+    this.fetchCart();
+  }
+}
+</script>
