@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
-                      <p class="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">Rp.{{ cart.regular_price }}</p>
+                      <p class="shrink-0 w-30 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">{{ (cart.regular_price).toLocaleString('id-ID', {style: 'currency', currency: 'IDR'}) }}</p>
 
                       <div class="class= grid md:grid-cols-7 mb-4 mt-7">
                         <div class="flex items-center border-gray-100">
@@ -81,16 +81,16 @@
           <div class="mt-6 border-t border-b py-2">
             <div class="flex items-center justify-between">
               <p class="text-sm text-black-1000">Subtotal</p>
-              <p class="text-lg font-semibold text-black-900">Rp.{{ totalHarga() }}</p>
+              <p class="text-lg font-semibold text-black-900">Rp {{ totalHarga() }}</p>
             </div>
             <div class="flex items-center justify-between">
               <p class="text-sm text-black-1000">Ongkir</p>
-              <p class="text-lg font-semibold text-black-900">Rp.{{ ongkir }}</p>
+              <p class="text-lg font-semibold text-black-900">{{ (ongkir).toLocaleString('id-ID', {style: 'currency', currency: 'IDR'}) }}</p>
             </div>
           </div>
           <div class="mt-6 flex items-center justify-between">
             <p class="text-sm font-medium text-black-900">Total</p>
-            <p class="text-2xl font-semibold text-black-900"><span class="text-xs font-normal text-black-1000">Rp.</span>{{ totalHarga() }}</p>
+            <p class="text-2xl font-semibold text-black-900">Rp {{ totalHarga() }}</p>
           </div>
 
           <div class="mt-6 text-center">

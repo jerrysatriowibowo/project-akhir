@@ -70,7 +70,33 @@ const cart = {
                 alert("Gagal Bang");
                 console.log(error);
             }
-        }
+        },
+        async checkoutCart({commit, dispatch}, {shippingAddress, billingAddress, paymentType, deliveryType, cart_item_ids}) {
+            try {
+                const response = await axios.post(
+                    'https://ecommerce.olipiskandar.com/api/v1/checkout/order/store',
+                    {
+                        shippingAddress_address_id: shippingAddress,
+                        billing_address_id: billingAddress,
+                        payment_type: paymentType,
+                        delivery_type: deliveryType,
+                        cart_item_ids: cart_item_ids,
+                        transactionId: null,
+                        receipt: null,
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                        },
+                    }
+                );
+                console.log(response.data.message);
+                dispatch("fetchCart");
+            } catch (error) {
+                alert("Error Checkout Nya Bang");
+                console.log(error);
+            }
+        },
     },
     mutations: {
         SET_CART(state, cart) {
