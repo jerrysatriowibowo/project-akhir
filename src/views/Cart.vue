@@ -1,5 +1,34 @@
 <template>
-  <section class="h-screen bg-gray-100 py-12 sm:py-16 lg:py-20">
+  <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+  <a href="#" class="text-2xl font-bold text-gray-800"></a>
+  <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
+    <div class="relative">
+      <ul class="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
+        <li class="flex items-center space-x-3 text-left sm:space-x-4">
+          <a class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-200 text-xs font-semibold text-emerald-700" href="/produk">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg></a>
+            <span class="font-semibold text-gray-500">Produk</span>
+        </li>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+        <li class="flex items-center space-x-3 text-left sm:space-x-4">
+          <a class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-600 text-xs font-semibold text-white ring ring-gray-600 ring-offset-2" href="/keranjang">2</a>
+          <span class="font-semibold text-gray-900">Keranjang</span>
+        </li>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+        <li class="flex items-center space-x-3 text-left sm:space-x-4">
+          <a class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-400 text-xs font-semibold text-white" href="#">3</a>
+          <span class="font-semibold text-gray-500">Checkout</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <section class="bg-gray-100 py-12 sm:py-16 lg:py-20">
   <div class="mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-center">
       <h1 class="text-2xl font-semibold text-gray-900">Keranjang</h1>
@@ -28,9 +57,9 @@
 
                       <div class="class= grid md:grid-cols-7 mb-4 mt-7">
                         <div class="flex items-center border-gray-100">
-                          <span @click="kurang" class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-black hover:text-yellow-50"> - </span>
-                            <span class="mr-2 ml-2">{{ cek }}</span>
-                          <span @click="tambah" class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-black hover:text-yellow-50"> + </span>
+                          <button @click="changeQty({cartId: cart.cart_id, typeQty: 'minus'})" class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-black hover:text-yellow-50"> - </button>
+                            <span class="mr-2 ml-2">{{ cart.qty }}</span>
+                          <button @click="changeQty({cartId: cart.cart_id, typeQty: 'plus'})" class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-black hover:text-yellow-50"> + </button>
                         </div>
                       </div>
                     </div>
@@ -56,7 +85,7 @@
             </div>
             <div class="flex items-center justify-between">
               <p class="text-sm text-black-1000">Ongkir</p>
-              <p class="text-lg font-semibold text-black-900">Rp.9.000</p>
+              <p class="text-lg font-semibold text-black-900">Rp.{{ ongkir }}</p>
             </div>
           </div>
           <div class="mt-6 flex items-center justify-between">
@@ -65,31 +94,30 @@
           </div>
 
           <div class="mt-6 text-center">
-            <a href="/checkout">
+            <router-link to="/checkout">
               <button type="button" class="group inline-flex w-full items-center justify-center rounded-md bg-green-700 px-6 py-4 text-lg font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-green-500">
                 Beli Sekarang
                 <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </button>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<br><br><br><br><br>
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
   data() {
-    return {
-      cek: 1
-    }
-  },
+      return {
+        ongkir: 18000
+      }
+    },
   computed:{
     ...mapGetters('cart', ['getCart'])
   },
@@ -98,21 +126,16 @@ export default {
     ...mapActions('product', ['fetchProduct']),
     totalHarga() {
       this.total = this.getCart.reduce((acc, product) => {
-        return acc + parseFloat(product.regular_price);
+        return acc + parseFloat(product.regular_price * product.qty + this.ongkir);
       }, 0);
       return this.total.toFixed(2);
     },
-    tambah() {
-      this.cek++
-    },
-    kurang() {
-      if (this.cek > 1) {
-        this.cek--
-      }
-    },
     removeItem(cartId) {
       this.$store.dispatch('cart/removeFromCart', cartId)
-    }
+    },
+    changeQty(cartId, typeQty) {
+      this.$store.dispatch('cart/changeQuantity', cartId, typeQty)
+    },
   },
   beforeMount() {
     this.fetchProduct();

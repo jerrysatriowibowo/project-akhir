@@ -48,6 +48,28 @@ const cart = {
                 alert("Gagal Hapus Barang Bang");
                 console.log(error);
             }
+        },
+        async changeQuantity({ commit, dispatch}, {cartId, typeQty}) {
+            try {
+                const response = await axios.post(
+                    'https://ecommerce.olipiskandar.com/api/v1/carts/change-quantity',
+                    {
+                        cart_id: cartId,
+                        temp_user_id: null,
+                        type: typeQty
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        },
+                    }
+                );
+                console.log(response.data.message);
+                dispatch("fetchCart");
+            } catch (error) {
+                alert("Gagal Bang");
+                console.log(error);
+            }
         }
     },
     mutations: {
