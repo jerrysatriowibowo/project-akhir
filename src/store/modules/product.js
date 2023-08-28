@@ -47,6 +47,7 @@ const product = {
                 }
                 });
                 commit("ADD_TO_CART", response.data)
+                alert("Barang Berhasil Di Tambah Ke Keranjang")
                 console.log(response.data)
             } catch (error) {
               console.error(error);

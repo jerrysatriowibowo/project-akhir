@@ -4,9 +4,11 @@ const cart = {
     namespaced: true,
     state: {
         cart: [],
+        dataCheckout: [],
     },
     getters: {
         getCart: (state) => state.cart,
+        getCheckout: (state) => state.dataCheckout,
     },
     actions: {
         async fetchCart({ commit }) {
@@ -45,7 +47,7 @@ const cart = {
                 console.log(response.data.message);
                 dispatch("fetchCart");
             } catch (error) {
-                alert("Gagal Hapus Barang Bang");
+                alert("Gagal Hapus Barang");
                 console.log(error);
             }
         },
@@ -67,40 +69,44 @@ const cart = {
                 console.log(response.data.message);
                 dispatch("fetchCart");
             } catch (error) {
-                alert("Gagal Bang");
+                alert("Gagal Tambah Jumlah");
                 console.log(error);
             }
         },
-        async checkoutCart({commit, dispatch}, {shippingAddress, billingAddress, paymentType, deliveryType, cart_item_ids}) {
+        async checkoutCart({ commit, dispatch },{ shippingAddress, billingAddress, paymentType, deliveryType, cart_item_ids,}) {
             try {
-                const response = await axios.post(
-                    'https://ecommerce.olipiskandar.com/api/v1/checkout/order/store',
-                    {
-                        shippingAddress_address_id: shippingAddress,
-                        billing_address_id: billingAddress,
-                        payment_type: paymentType,
-                        delivery_type: deliveryType,
-                        cart_item_ids: cart_item_ids,
-                        transactionId: null,
-                        receipt: null,
-                    },
-                    {
-                        headers: {
-                            Authorization: `Bearer ${localStorage.getItem("token")}`
-                        },
-                    }
-                );
-                console.log(response.data.message);
-                dispatch("fetchCart");
+              const response = await axios.post(
+                `https://ecommerce.olipiskandar.com/api/v1/checkout/order/store`,
+                {
+                  shipping_address_id: shippingAddress,
+                  billing_address_id: billingAddress,
+                  payment_type: paymentType,
+                  delivery_type: deliveryType,
+                  cart_item_ids: cart_item_ids,
+                  transactionId: null,
+                  receipt: null,
+                },
+                {
+                  headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                  },
+                }
+              );
+              console.log(response.data.message);
+              dispatch("fetchCart");
+              commit('SET_CHECKOUT', response.data);
             } catch (error) {
-                alert("Error Checkout Nya Bang");
-                console.log(error);
+              alert("Gagal Checkout");
+              console.log(error);
             }
         },
     },
     mutations: {
         SET_CART(state, cart) {
             state.cart = cart;
+        },
+        SET_CHECKOUT(state, checkout) {
+            state.dataCheckout = checkout;
         },
     },
 };

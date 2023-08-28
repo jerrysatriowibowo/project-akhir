@@ -42,7 +42,7 @@
               <div v-for="cart in getCart" :key="cart.cart_id">
                 <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
                   <div class="shrink-0">
-                    <img class="h-24 w-24 max-w-full rounded-lg object-cover" src="https://ecommerce.olipiskandar.com/public/uploads/all/UpUx213sXC5XBW07vbXn1vkWMWxTu95CDDbMzwkF.jpg" alt="" />
+                    <img class="h-24 w-24 max-w-full rounded-lg object-cover" src="../assets/img/dasar.jpg" alt="" />
                   </div>
 
                 <div class="relative flex flex-1 flex-col justify-between">
@@ -81,7 +81,7 @@
           <div class="mt-6 border-t border-b py-2">
             <div class="flex items-center justify-between">
               <p class="text-sm text-black-1000">Subtotal</p>
-              <p class="text-lg font-semibold text-black-900">Rp {{ totalHarga() }}</p>
+              <p class="text-lg font-semibold text-black-900">{{ (totalHarga()).toLocaleString('id-ID', {style: 'currency', currency: 'IDR'}) }}</p>
             </div>
             <div class="flex items-center justify-between">
               <p class="text-sm text-black-1000">Ongkir</p>
@@ -90,7 +90,7 @@
           </div>
           <div class="mt-6 flex items-center justify-between">
             <p class="text-sm font-medium text-black-900">Total</p>
-            <p class="text-2xl font-semibold text-black-900">Rp {{ totalHarga() }}</p>
+            <p class="text-2xl font-semibold text-black-900">{{ (totalHarga() + ongkir).toLocaleString('id-ID', {style: 'currency', currency: 'IDR'}) }}</p>
           </div>
 
           <div class="mt-6 text-center">
@@ -126,9 +126,9 @@ export default {
     ...mapActions('product', ['fetchProduct']),
     totalHarga() {
       this.total = this.getCart.reduce((acc, product) => {
-        return acc + parseFloat(product.regular_price * product.qty + this.ongkir);
+        return acc + parseFloat(product.regular_price * product.qty);
       }, 0);
-      return this.total.toFixed(2);
+      return this.total;
     },
     removeItem(cartId) {
       this.$store.dispatch('cart/removeFromCart', cartId)

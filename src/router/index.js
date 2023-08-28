@@ -10,6 +10,7 @@ import Register from "../views/Register.vue";
 import Brand from "../views/Brand.vue";
 import Kategori from "../views/Kategori.vue";
 import Profile from "../views/Profile.vue";
+import Order from "../views/Order.vue";
 import store from "../store";
 
 const routes = [
@@ -76,6 +77,13 @@ const routes = [
         path: "/profile",
         name: "Profile",
         component: Profile,
+        meta: { requireLogin: true },
+    },
+    {
+        path: '/order/:orderCode',
+        name: 'Order',
+        component: Order,
+        props: true,
         meta: { requireLogin: true },
     },
 ];
