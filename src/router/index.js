@@ -34,14 +34,12 @@ const routes = [
         path: "/produk",
         name: "Product",
         component: Product,
-        meta: { requireLogin: true },
     },
     {
         path: "/product/:slug",
         name: "SingleProduct",
         component: SingleProduct,
         props: true,
-        meta: { requireLogin: true },
     },
     {
         path: "/keranjang",
@@ -65,7 +63,6 @@ const routes = [
         path: "/brand",
         name: "Brand",
         component: Brand,
-        meta: { requireLogin: true },
     },
     {
         path: "/kategori",

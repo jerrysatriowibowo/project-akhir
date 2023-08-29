@@ -3,7 +3,7 @@
     <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="/profile" class="flex items-center">
-        <img src="https://png.pngtree.com/png-clipart/20210314/original/pngtree-mc-latter-logo-design-png-image_6102551.jpg" class="h-8 mr-3" alt="Logo" />
+        <img src="../src/assets/img/logo.png" class="h-8 mr-3" alt="Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">MCStore.</span>
     </a>
     <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">

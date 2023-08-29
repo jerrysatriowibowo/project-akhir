@@ -184,6 +184,9 @@
           </div>
         </div>
       <button @click="performCheckout" class="mt-4 mb-8 w-full rounded-md bg-green-900 px-6 py-3 font-medium text-white">Buat Pesanan</button>
+      <a href="/produk">
+      <button class="mb-8 w-full rounded-md bg-red-900 px-6 py-3 font-medium text-white">Batal</button>
+    </a>
     </div>
   </div><br><br>
 </template>

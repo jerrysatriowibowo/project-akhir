@@ -17,7 +17,7 @@
       </li>
       <li class="flex items-center py-3 text-sm">
         <span>Tempat Tanggal Lahir</span>
-        <span class="ml-auto">Jepang, 6 Agustus 1945</span>
+        <span class="ml-auto">Aceh, 26 Desember 2004</span>
       </li>
       <li class="flex items-center py-3 text-sm">
         <span>Status</span>
